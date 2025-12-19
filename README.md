@@ -1,18 +1,4 @@
-/* =========================================================
-   SISTEMA DE GESTIÓN DE BIBLIOTECA
-   Código unificado (copiar y pegar)
 
-   ┌ biblioteca.h  -> LIBRERÍA PROPIA
-   ├ biblioteca.c  -> IMPLEMENTACIÓN DE LA LIBRERÍA
-   └ main.c        -> PROGRAMA PRINCIPAL
-
-   (Todo está junto solo para facilitar copia)
-   ========================================================= */
-
-
-/* =========================
-   biblioteca.h
-   ========================= */
 #ifndef BIBLIOTECA_H
 #define BIBLIOTECA_H
 
@@ -20,7 +6,6 @@
 #define MAX_TITULO 100
 #define MAX_AUTOR 50
 
-/* Estructura Libro */
 typedef struct {
     int id;
     char titulo[MAX_TITULO];
@@ -29,11 +14,9 @@ typedef struct {
     char estado[15];   // "Disponible" o "Prestado"
 } Libro;
 
-/* Variables globales */
 extern Libro biblioteca[MAX_LIBROS];
 extern int totalLibros;
 
-/* Prototipos */
 void menuPrincipal();
 void registrarLibro();
 void mostrarLibros();
@@ -44,21 +27,15 @@ int validarIDUnico(int id);
 void limpiarBuffer();
 
 #endif
-/* ======= FIN biblioteca.h ======= */
 
-
-/* =========================
-   biblioteca.c
-   ========================= */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
-/* Definición de variables globales */
 Libro biblioteca[MAX_LIBROS];
 int totalLibros = 0;
 
-/* Menú principal */
+
 void menuPrincipal() {
     system("clear || cls");
     printf("========================================\n");
@@ -75,7 +52,7 @@ void menuPrincipal() {
     printf("========================================\n");
 }
 
-/* Registrar libro */
+
 void registrarLibro() {
     if (totalLibros >= MAX_LIBROS) {
         printf("La biblioteca está llena.\n");
@@ -110,7 +87,7 @@ void registrarLibro() {
     printf("Libro registrado exitosamente.\n");
 }
 
-/* Mostrar libros */
+
 void mostrarLibros() {
     if (totalLibros == 0) {
         printf("No hay libros registrados.\n");
@@ -128,7 +105,6 @@ void mostrarLibros() {
     }
 }
 
-/* Buscar libro por ID */
 void buscarLibro() {
     int id;
     printf("Ingrese ID del libro: ");
@@ -148,7 +124,7 @@ void buscarLibro() {
     printf("Libro no encontrado.\n");
 }
 
-/* Actualizar estado */
+
 void actualizarEstado() {
     int id;
     printf("Ingrese ID del libro: ");
@@ -169,7 +145,7 @@ void actualizarEstado() {
     printf("Libro no encontrado.\n");
 }
 
-/* Eliminar libro */
+
 void eliminarLibro() {
     int id;
     printf("Ingrese ID del libro a eliminar: ");
@@ -189,7 +165,7 @@ void eliminarLibro() {
     printf("Libro no encontrado.\n");
 }
 
-/* Validar ID único */
+
 int validarIDUnico(int id) {
     for (int i = 0; i < totalLibros; i++) {
         if (biblioteca[i].id == id)
@@ -198,16 +174,13 @@ int validarIDUnico(int id) {
     return 1;
 }
 
-/* Limpiar buffer */
+
 void limpiarBuffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
 
-/* =========================
-   main.c
-   ========================= */
 int main() {
     int opcion;
 
