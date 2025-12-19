@@ -11,7 +11,7 @@ typedef struct {
     char titulo[MAX_TITULO];
     char autor[MAX_AUTOR];
     int anio;
-    char estado[15];   // "Disponible" o "Prestado"
+    char estado[15];  
 } Libro;
 
 extern Libro biblioteca[MAX_LIBROS];
